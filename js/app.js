@@ -8,7 +8,7 @@ const useItem = document.querySelector(".user__item");
 // refresh
 formButton.addEventListener("click", (e) => {
   e.preventDefault();
-  loady()
+  loady();
   clearBtn.classList.remove("hidden");
   // ustoz template qoshganim uchun shu joyini togrlab bolmadi pasiga boshqatan qoshib ketyapti yangi malumot olmasdan
 });
@@ -22,21 +22,20 @@ clearBtn.addEventListener("click", (e) => {
 // search
 form["form__input"].addEventListener("input", () => {
   let inputValue = form["form__input"].value.toLowerCase();
-  let userName = document.querySelectorAll(".user__name")
- userName.forEach((item)=> {
+  let userName = document.querySelectorAll(".user__name");
+  userName.forEach((item) => {
     console.log(item);
 
-    if(item.lastElementChild.textContent.toLowerCase().includes(inputValue)) {
-     item.parentElement.classList.remove("hidden")
+    if (item.lastElementChild.textContent.toLowerCase().includes(inputValue)) {
+      item.parentElement.classList.remove("hidden");
     } else {
-        item.parentElement.classList.add("hidden")
+      item.parentElement.classList.add("hidden");
     }
-    
- })
+  });
 });
 
 const UpDataUi = (data) => {
-
+  user.innerHTML = "";
   data.forEach((item) => {
     let clone = template.content.cloneNode(true);
     const userGender = clone.querySelector(".user__gender");
@@ -81,20 +80,16 @@ const UpDataUi = (data) => {
     // gender
     // faqat erkaklar shartini qoshdim ustoz
     gender.textContent = item.gender;
-  if(userGender.lastElementChild.textContent !== "male") {
-      userGender.parentElement.classList.add("hidden")
-  };
+    if (userGender.lastElementChild.textContent !== "male") {
+      userGender.parentElement.classList.add("hidden");
+    }
 
     user.appendChild(clone);
-
   });
-
 };
-document.addEventListener("click",(e) => {
-e.preventDefault()
-if (e.target.classList[0] === "user__delete--btn") {
-    e.target.parentElement.remove()
-}
-
-
-})
+document.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.classList[0] === "user__delete--btn") {
+    e.target.parentElement.remove();
+  }
+});
